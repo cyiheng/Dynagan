@@ -26,22 +26,22 @@ cd InProgress
 
 - Install dependencies:
 ```bash
-`pip install -r requirements.txt`.
+pip install -r requirements.txt
 ```
 
 ### Download pretrained weight
 Download a pre-trained model with `./scripts/download_pretrained_model.sh`.
 
 ```bash
-bash ./scripts/download_pretrained_model.sh dynagan
+bash ./scripts/download_pretrained_model.sh
 ```
 
 ### Run Inference
 - Test the model after download pretrained weight:
 ```bash
-python ./test_3D.py --dataroot ./datasets/ --name dynagan_pretrained --model test --dataset_mode test --num_test 1
+python ./test_3D.py --dataroot ./datasets/ --name pretrained_model --model test --dataset_mode test --num_test 1
 ```
-- The test results will be saved by default in the directory : `./results/dynagan_pretrained/`
+- The test results will be saved by default in the directory : `./results/pretrained_model/`
 
 ### Datasets
 
