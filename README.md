@@ -45,6 +45,8 @@ python ./test_3D.py --dataroot ./datasets/ --name pretrained_model --model test 
 
 ### Datasets
 
+(TODO) Ref: DIRLAB & TCIA for using their data as example
+
 (TODO) Preprocess : 
 - Filename : `LungCT_0000_0000.nii.gz`
 - Need to have the same orientation (RAI)
