@@ -1,7 +1,7 @@
 
 <p float="left">
-  <img src="imgs/Fake_TCIA_103.gif" width="150" />
-  <img src="imgs/Real_TCIA_103.gif" width="150" /> 
+  <img src="imgs/Fake_TCIA_103.gif" width="300" />
+  <img src="imgs/Real_TCIA_103.gif" width="300" /> 
 </p>
 
 <br><br><br>
