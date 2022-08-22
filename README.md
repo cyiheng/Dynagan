@@ -42,6 +42,21 @@ bash ./scripts/download_pretrained_model.sh
 python ./test_3D.py --dataroot ./datasets/ --name pretrained_model --model test --dataset_mode test --num_test 1
 ```
 - The test results will be saved by default in the directory : `./results/pretrained_model/`
+- You can change the range of alpha with the following options: 
+```bash
+--alpha_min : the minimum value of the generated images (default: 0.0)
+--alpha_max : the maximum value of the generated images (default: 1.0)
+--alpha_step: the number of intermediate images between the range [alpha_min, alpha_max] (default: 5)
+```
+- **NOTE:** The minimum and maximum alphas values are 0.0 and 3.0 respectively. 
+
+- You can select the loop mode for the final generated 4DCT: 
+```bash
+--loop : change how the 4DCT is stacked from the generated images
+	0 : Only Source phase to alpha-inhale phase - [0,1,...,alpha]
+	1 : Source to alpha-inhale phase and then add reversed images (alpha-inhale phase to source) - [0,1,...,alpha,...,2,1]
+	2 : Same as 1, but with a step of 2, avoiding re-using a same image twice - [0,2,4,...,alpha,...,5,3,1]
+```
 
 ### Datasets
 

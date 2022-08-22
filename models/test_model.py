@@ -31,6 +31,7 @@ class TestModel(BaseModel):
         assert not is_train, 'TestModel cannot be used during training time'
         parser.set_defaults(dataset_mode='dynagan')
         parser.add_argument('--model_suffix', type=str, default='', help='In checkpoints_dir, [epoch]_net_G[model_suffix].pth will be loaded as the generator.')
+        parser.add_argument('--loop', type=int, default=0, help='Looping mode for generating the final 4DCT [ 0 | 1 | 2 ] ; default : 0')
 
         return parser
 
@@ -53,6 +54,7 @@ class TestModel(BaseModel):
 
         self.alphas = torch.linspace(opt.alpha_min, opt.alpha_max, steps=opt.alpha_step)
         self.isTumor = opt.isTumor
+        self.loop = opt.loop
         self.transform = SpatialTransformer([128,128,128]).to(self.device)
         self.transform_tum = SpatialTransformer([128,128,128], 'nearest').to(self.device)
         self.output_dir = './{}/{}/'.format(opt.results_dir, opt.name)
@@ -102,7 +104,7 @@ class TestModel(BaseModel):
         
         # Stack and generate the 4DCT image
         output_file = os.path.join(self.output_dir, 'LungsCT_{}_4DCT.nii.gz'.format(case))
-        create_4DCT(self.image_paths, self.warped_dir, output_file, loop=1)
+        create_4DCT(self.image_paths, self.warped_dir, output_file, loop=self.loop)
 
     def optimize_parameters(self):
         """No optimization for test model."""
