@@ -46,7 +46,7 @@ Hugo, Geoffrey D., Weiss, Elisabeth, Sleeman, William C., Balik, Salim, Keall, P
 A Jupyter notebook is available to preprocess data into the input image format.
 Before running the notebook, please check the following information:
 - Fileformat supported: NifTI
-- Filename: `LungCT_patient_phase.nii.gz (i.e: LungCT_0100_0005.nii.gz`)
+- Filename: `LungCT_patient_phase.nii.gz (i.e: LungCT_0100_0005.nii.gz)`
 - Initial files location: `./datasets/001_original/`
 - Initial image orientation: RAI
 
