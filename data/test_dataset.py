@@ -72,7 +72,7 @@ class TestDataset(BaseDataset):
 
         # Warp tumor too is needed
         if self.isTumor:
-            file_A = os.path.basename(file_A_path)
+            file_A = os.path.basename(filepath_A)
             tum_A_file = os.path.join(self.rootdir, 'tumor', file_A)
             tum_A_arr = nib.load(tum_A_file).get_fdata()
             tum_A = torch.from_numpy(tum_A_arr.astype(np.float32))

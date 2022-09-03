@@ -127,6 +127,6 @@ class TestModel(BaseModel):
         # If need to warp tumor
         if self.isTumor:
             fake_tum_file= os.path.join(self.tumor_dir, 'Fake_{:04d}-tumor.nii.gz'.format(phase))
-            save_as_3D(self.fake_B_tum, self.image_paths, fake_tum_file)
+            save_as_3D(self.fake_B_tumor, self.image_paths, fake_tum_file)
 
         
