@@ -15,6 +15,7 @@ Work In progress
 - CPU or NVIDIA GPU + CUDA CuDNN
 
 ## Getting Started
+
 ### Executable
 - You can find a packed version here, only need to launch the application 
 > For [Windows user](https://ubocloud.univ-brest.fr/s/tqjfEe39Q3J8qyD) (~700MB)
