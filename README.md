@@ -15,6 +15,13 @@ Work In progress
 - CPU or NVIDIA GPU + CUDA CuDNN
 
 ## Getting Started
+### Executable
+- You can find a packed version here, only need to launch the application 
+> For [Windows user](https://ubocloud.univ-brest.fr/s/tqjfEe39Q3J8qyD) (~700MB)
+> For [Linux user](https://ubocloud.univ-brest.fr/s/praTqmtddTdS6jH) (~2.4GB)
+
+- **NOTES:** Only 128x128x128 images that undergo the preprocess are enable to use
+
 ### Installation
 
 - Clone this repo:
@@ -53,7 +60,6 @@ Before running the notebook, please check the following information:
 
 The notenook needs the following tools:
 - Lung segmentation : [lungmask](https://github.com/JoHof/lungmask)
-- Image resampling  : [plastimatch](http://plastimatch.org/getting_started.html)
 - Several operation is based on SimpleITK : [SimpleITK](https://github.com/SimpleITK/SimpleITKPythonPackage)
 
 After running the notebook, the dataset directories should be like following if all 4D-lung dataset is used:
@@ -74,14 +80,7 @@ After running the notebook, the dataset directories should be like following if 
 │   ├── ...
 │   └── LungCT_0119_0009.nii.gz
 ├── 002_bounding_box
-│   ├── ...
-│   └── LungCT_0119_0009.nii.gz
-├── 003_isotrope
-│   ├── ...
-│   └── LungCT_0119_0009.nii.gz
-├── 004_128x128x128
-│   ├── ...
-│   └── LungCT_0119_0009.nii.gz
+├── 003_128x128x128
 └── imagesTs
 ```
 The final images are in a shape of 128 x 128 x 128.
