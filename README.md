@@ -37,9 +37,9 @@ TODO
 
 We made a simple application to try out the model.
 
-> For [Windows user](https://ubocloud.univ-brest.fr/s/tqjfEe39Q3J8qyD) (~700MB)
+> For [Windows user](https://ubocloud.univ-brest.fr/s/tqjfEe39Q3J8qyD) (~800MB)
 
-> For [Linux user](https://ubocloud.univ-brest.fr/s/praTqmtddTdS6jH) (~2.4GB)
+> For [Linux user](https://ubocloud.univ-brest.fr/s/praTqmtddTdS6jH) (~2.1GB)
 
 <p align="center">
   <img src="imgs/screenshot_interface.png" width="600" />
