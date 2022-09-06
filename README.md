@@ -1,31 +1,58 @@
 
-<p float="left">
+<p align="center">
   <img src="imgs/real_fake.gif" width="600" />
 </p>
 
-<br><br><br>
+<br>
 
-# Patient Specific 4DCT
+# Patient specific 4D CT respiratory motion synthesis using generative adversarial networks
 
-Work In progress
+A general objective of radiotherapy treatment planning is to deliver the lowest radiation dose induced by imaging protocols. Four-dimensional computed tomography (4D CT) imaging is used routinely for respiratory motion synchronization in radiotherapy treatment planning. However, those images require a longer acquisition time leading to a higher radiation exposure, up to six times a standard 3D CT acquisition. There is therefore a clear need for alternative planning methods that would reduce the dose impact.
 
-## Application
+This study proposes a new deep learning architecture architecture to generate realistic respiratory motion from static 3D CT images tailored to the actual patient breathing dynamics. An image-to-image 3D generative adversarial network conditioned with a 3D CT image and an amplitude-based scalar value using a scalar injection mechanism based on an Adaptive Instance Normalization layer is proposed in this study. 
 
-- You can find a packed version here, only need to launch the application 
+This repository shares source code to run inference and thus generate motion from a 3D CT image.
+
+# Table of Contents
+- [Intro](#Patient-specific-4D-CT-respiratory-motion-synthesis-using-generative-adversarial-networks)
+- [Table of Contents](#table-of-contents)
+- [Ready-to-go](#ready-to-go)
+- [Usage](#usage)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Download pretrained weight](#download-pretrained-weight)
+  - [Datasets](#datasets)
+  - [Run inference](#run-inference)
+- [Acknowledgements](#acknowledgements)
+
+# Ready-to-go
+
+We made a simple application to try out the model.
+
 > For [Windows user](https://ubocloud.univ-brest.fr/s/tqjfEe39Q3J8qyD) (~700MB)
 
 > For [Linux user](https://ubocloud.univ-brest.fr/s/praTqmtddTdS6jH) (~2.4GB)
 
-- **NOTES:** Only 128x128x128 images that undergo the preprocess are enable to use
+<p align="center">
+  <img src="imgs/screenshot_interface.png" width="600" />
+</p>
+
+**NOTES:** 
+- It can takes only one file at time (unlike the version in [Usage](#usage)
+- The preprocessing is included in the application but might take some time to run depending of the image size.
+- It doesn't need GPU, but it will take a longer time for preprocessing & generating phases.
+- It takes some times to be launched, some warning might appear but nothing wrong. 
+
+For more details about the alphas values and loop modes, please refer to [Run inference](#run-inference).
+
+# Usage
 
 ## Prerequisites
 - Linux
 - Python 3
 - CPU or NVIDIA GPU + CUDA CuDNN
 
-## Getting Started
-
-### Installation
+## Installation
 
 - Clone this repo:
 ```bash
@@ -38,14 +65,14 @@ cd InProgress
 pip install -r requirements.txt
 ```
 
-### Download pretrained weight
+## Download pretrained weight
 Download a pre-trained model with `./scripts/download_pretrained_model.sh`.
 
 ```bash
 bash ./scripts/download_pretrained_model.sh
 ```
 
-### Datasets
+## Datasets
 
 As example, you can use the 4D-Lung dataset from The Cancer Imaging Archive.
 ```
@@ -90,7 +117,7 @@ The final images are in a shape of 128 x 128 x 128.
 Please select the images you want to use as input for the model to the directory `imagesTs`
 
 
-### Run Inference
+## Run Inference
 
 - Test the model after download pretrained weight:
 ```bash
@@ -116,13 +143,13 @@ python ./test_3D.py --dataroot ./datasets/ --name pretrained_model --model test 
 - **NOTE:** For no GPU user, please add the option `--gpu_ids -1`, it will run on CPU instead.
 
 
-## Citation
+# Citation
 If you use this code for your research, please cite our papers.
 ```
 TODO
 ```
 
-## Acknowledgments
+# Acknowledgments
 Our code is inspired by :
 - [CycleGAN and pix2pix in Pytorch](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix).
 - [vox2vox](https://github.com/enochkan/vox2vox)
