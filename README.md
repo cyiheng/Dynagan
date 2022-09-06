@@ -47,11 +47,11 @@ We made a simple application to try out the model.
 
 **NOTES:** 
 - It can takes only one file at time (unlike the version in [Usage](#usage)
-- The preprocessing is included in the application but might take some time to run depending of the image size.
+- The preprocessing is included in the application but might take some time to run depending of the image size, CPU and GPU.
 - It doesn't need GPU, but it will take a longer time for preprocessing & generating phases.
 - It takes some times to be launched, some warning might appear but nothing wrong. 
 
-For more details about the alphas values and loop modes, please refer to [Run inference](#run-inference).
+For more details about the alphas values and loop modes, please check [Run inference](#run-inference).
 
 # Usage
 
@@ -138,10 +138,10 @@ python ./test_3D.py --dataroot ./datasets/ --name pretrained_model --model test 
 - You can change the range of alpha with the following options: 
 ```bash
 --alpha_min : the minimum value of the generated images (default: 0.0)
---alpha_max : the maximum value of the generated images (default: 1.0)
+--alpha_max : the maximum value of the generated images (default: 2.0)
 --alpha_step: the number of intermediate images between the range [alpha_min, alpha_max] (default: 5)
 ```
-- **NOTE:** The minimum and maximum alphas values are 0.0 and 3.0 respectively. 
+- **NOTE:** The minimum and maximum alphas values are 0.0 and 3.5 respectively. 
 
 - You can select the loop mode for the final generated 4DCT: 
 ```bash
