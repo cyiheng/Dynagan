@@ -1,9 +1,7 @@
-
+<br>
 <p align="center">
   <img src="imgs/real_fake.gif" width="600" />
 </p>
-
-<br>
 
 # Patient specific 4D CT respiratory motion synthesis using generative adversarial networks
 
@@ -12,6 +10,15 @@ A general objective of radiotherapy treatment planning is to deliver the lowest 
 This study proposes a new deep learning architecture architecture to generate realistic respiratory motion from static 3D CT images tailored to the actual patient breathing dynamics. An image-to-image 3D generative adversarial network conditioned with a 3D CT image and an amplitude-based scalar value using a scalar injection mechanism based on an Adaptive Instance Normalization layer is proposed in this study. 
 
 This repository shares source code to run inference and thus generate motion from a 3D CT image.
+
+<p align="center">
+  <img src="imgs/generation.png" width="600" />
+</p>
+
+If you use this code for your research, please cite our papers.
+```
+TODO
+```
 
 # Table of Contents
 - [Intro](#Patient-specific-4D-CT-respiratory-motion-synthesis-using-generative-adversarial-networks)
@@ -24,6 +31,7 @@ This repository shares source code to run inference and thus generate motion fro
   - [Datasets](#datasets)
   - [Run inference](#run-inference)
 - [Acknowledgements](#acknowledgements)
+
 
 # Ready-to-go
 
@@ -78,6 +86,9 @@ As example, you can use the 4D-Lung dataset from The Cancer Imaging Archive.
 ```
 Hugo, Geoffrey D., Weiss, Elisabeth, Sleeman, William C., Balik, Salim, Keall, Paul J., Lu, Jun, & Williamson, Jeffrey F. (2016). Data from 4D Lung Imaging of NSCLC Patients. The Cancer Imaging Archive. http://doi.org/10.7937/K9/TCIA.2016.ELN8YGLE
 ```
+<p align="center">
+  <img src="imgs/preprocess.png" width="600" />
+</p>
 
 A Jupyter notebook is available to preprocess data into the input image format.
 Before running the notebook, please check the following information:
@@ -141,13 +152,6 @@ python ./test_3D.py --dataroot ./datasets/ --name pretrained_model --model test 
 ```
 
 - **NOTE:** For no GPU user, please add the option `--gpu_ids -1`, it will run on CPU instead.
-
-
-# Citation
-If you use this code for your research, please cite our papers.
-```
-TODO
-```
 
 # Acknowledgments
 Our code is inspired by :
