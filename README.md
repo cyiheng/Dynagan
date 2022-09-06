@@ -12,7 +12,7 @@ This study proposes a new deep learning architecture architecture to generate re
 This repository shares source code to run inference and thus generate motion from a 3D CT image.
 
 <p align="center">
-  <img src="imgs/generation.png" width="600" />
+  <img src="imgs/generation.png" width="800" />
 </p>
 
 If you use this code for your research, please cite our papers.
@@ -42,7 +42,7 @@ We made a simple application to try out the model.
 > For [Linux user](https://ubocloud.univ-brest.fr/s/praTqmtddTdS6jH) (~2.4GB)
 
 <p align="center">
-  <img src="imgs/screenshot_interface.png" width="800" />
+  <img src="imgs/screenshot_interface.png" width="600" />
 </p>
 
 **NOTES:** 
@@ -87,7 +87,7 @@ As example, you can use the 4D-Lung dataset from The Cancer Imaging Archive.
 Hugo, Geoffrey D., Weiss, Elisabeth, Sleeman, William C., Balik, Salim, Keall, Paul J., Lu, Jun, & Williamson, Jeffrey F. (2016). Data from 4D Lung Imaging of NSCLC Patients. The Cancer Imaging Archive. http://doi.org/10.7937/K9/TCIA.2016.ELN8YGLE
 ```
 <p align="center">
-  <img src="imgs/preprocessing.png" width="600" />
+  <img src="imgs/preprocessing.png" width="800" />
 </p>
 
 A Jupyter notebook is available to preprocess data into the input image format.
