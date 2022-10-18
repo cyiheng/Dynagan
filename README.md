@@ -30,8 +30,8 @@ TODO
   - [Download pretrained weight](#download-pretrained-weight)
   - [Run inference](#run-inference)
   - [Datasets](#datasets)
-    -[Preprocessing](#preprocessing)
-    -[Postprocessing](#postprocessing)
+    - [Preprocessing](#preprocessing)
+    - [Postprocessing](#postprocessing)
 - [Acknowledgements](#acknowledgements)
 
 
