@@ -28,8 +28,10 @@ TODO
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Download pretrained weight](#download-pretrained-weight)
-  - [Datasets](#datasets)
   - [Run inference](#run-inference)
+  - [Datasets](#datasets)
+    -[Preprocessing](#preprocessing)
+    -[Postprocessing](#postprocessing)
 - [Acknowledgements](#acknowledgements)
 
 
@@ -80,17 +82,45 @@ Download a pre-trained model with `./scripts/download_pretrained_model.sh`.
 bash ./scripts/download_pretrained_model.sh
 ```
 
+## Run Inference
+
+- Test the model after download pretrained weight:
+```bash
+python ./test_3D.py --dataroot ./datasets/ --name pretrained_model --model test --dataset_mode test --num_test 1
+```
+- The test results will be saved by default in the directory : `./results/pretrained_model/`
+- You can change the range of alpha with the following options: 
+```bash
+--alpha_min : the minimum value of the generated images (default: 0.0)
+--alpha_max : the maximum value of the generated images (default: 2.0)
+--alpha_step: the number of intermediate images between the range [alpha_min, alpha_max] (default: 5)
+```
+- **NOTE:** The minimum and maximum alphas values are 0.0 and 3.5 respectively. 
+
+- You can select the loop mode for the final generated 4DCT: 
+```bash
+--loop : change how the 4DCT is stacked from the generated images
+	0 : Only Source phase to alpha-inhale phase - [0,1,...,alpha]
+	1 : Source to alpha-inhale phase and then add reversed images (alpha-inhale phase to source) - [0,1,...,alpha,...,2,1]
+	2 : Same as 1, but with a step of 2, avoiding re-using a same image twice - [0,2,4,...,alpha,...,5,3,1]
+```
+
+- **NOTE:** For no GPU user, please add the option `--gpu_ids -1`, it will run on CPU instead.
+
 ## Datasets
 
 As example, you can use the 4D-Lung dataset from The Cancer Imaging Archive.
 ```
 Hugo, Geoffrey D., Weiss, Elisabeth, Sleeman, William C., Balik, Salim, Keall, Paul J., Lu, Jun, & Williamson, Jeffrey F. (2016). Data from 4D Lung Imaging of NSCLC Patients. The Cancer Imaging Archive. http://doi.org/10.7937/K9/TCIA.2016.ELN8YGLE
 ```
+
+### Preprocessing 
+
 <p align="center">
   <img src="imgs/preprocessing.png" width="800" />
 </p>
 
-A Jupyter notebook is available to preprocess data into the input image format.
+A Jupyter notebook is available to **preprocess** data into the input image format.
 Before running the notebook, please check the following information:
 - Fileformat supported: NifTI
 - Filename: `LungCT_patient_phase.nii.gz (i.e: LungCT_0100_0005.nii.gz)`
@@ -127,31 +157,14 @@ After running the notebook, the dataset directories should be like following if 
 The final images are in a shape of 128 x 128 x 128.
 Please select the images you want to use as input for the model to the directory `imagesTs`
 
+### Postprocessing
 
-## Run Inference
+A Jupyter notebook is available to **postprocess** data into the initial size if the **postprocess** was done by the section [above](#preprocessing).
+The notebook will use the deformation vector field generated at [inference](#run-inference).
 
-- Test the model after download pretrained weight:
-```bash
-python ./test_3D.py --dataroot ./datasets/ --name pretrained_model --model test --dataset_mode test --num_test 1
-```
-- The test results will be saved by default in the directory : `./results/pretrained_model/`
-- You can change the range of alpha with the following options: 
-```bash
---alpha_min : the minimum value of the generated images (default: 0.0)
---alpha_max : the maximum value of the generated images (default: 2.0)
---alpha_step: the number of intermediate images between the range [alpha_min, alpha_max] (default: 5)
-```
-- **NOTE:** The minimum and maximum alphas values are 0.0 and 3.5 respectively. 
-
-- You can select the loop mode for the final generated 4DCT: 
-```bash
---loop : change how the 4DCT is stacked from the generated images
-	0 : Only Source phase to alpha-inhale phase - [0,1,...,alpha]
-	1 : Source to alpha-inhale phase and then add reversed images (alpha-inhale phase to source) - [0,1,...,alpha,...,2,1]
-	2 : Same as 1, but with a step of 2, avoiding re-using a same image twice - [0,2,4,...,alpha,...,5,3,1]
-```
-
-- **NOTE:** For no GPU user, please add the option `--gpu_ids -1`, it will run on CPU instead.
+Please note that an example is given in the notebook but need to be modified depending of :
+- The paths
+- The input file used
 
 # Acknowledgments
 Our code is inspired by :

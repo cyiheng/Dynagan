@@ -103,7 +103,7 @@ class TestModel(BaseModel):
             self.save_samples(self.output_dir, i)
         
         # Stack and generate the 4DCT image
-        output_file = os.path.join(self.output_dir, 'LungsCT_{}_4DCT.nii.gz'.format(case))
+        output_file = os.path.join(self.output_dir, 'LungCT_{}_4DCT.nii.gz'.format(case))
         create_4DCT(self.image_paths, self.warped_dir, output_file, loop=self.loop)
 
     def optimize_parameters(self):
