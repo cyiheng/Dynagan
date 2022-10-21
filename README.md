@@ -50,8 +50,21 @@ We made a simple application to try out the model.
 **NOTES:** 
 - It can takes only one file at time (unlike the version in [Usage](#usage)
 - The preprocessing is included in the application but might take some time to run depending of the image size, CPU and GPU.
+- **IMPORTANT** If you are using the preprocessing, the postprocessing will be done as well, please select the quality needed.
+- The postprocessing will put the generated image in the initial size. If you select the low quality, it will directly use the generated image. High quality is performed by resampling the deformation vector field to the initial space and then applied to the original input image.
 - It doesn't need GPU, but it will take a longer time for preprocessing & generating phases.
 - It takes some times to be launched, some warning might appear but nothing wrong. 
+
+Information about runtime for alpha steps of <b>5</b> and initial image size of <b>512x512x117</b>:
+| Device | Quality | Preprocessing | Generation | Postprocessing |   Total  |
+| ------ | ------- | ------------- | ---------- | -------------- | -------- |
+| CPU    | Low     | ≈ 150sec      | ≈ 56sec    | ≈ 110sec       | ≈ 330sec |
+| CPU    | High    | ≈ 150sec      | ≈ 56sec    | ≈ 180sec       | ≈ 330sec |
+| GPU    | Low     | ≈ 20sec       | ≈ 35sec    | ≈ 110sec       | ≈ 150sec |
+| GPU    | High    | ≈ 20sec       | ≈ 35sec    | ≈ 180sec       | ≈ 150sec |
+Those times are obtained with : 
+- an NVIDIA GeForce GTX 1080Ti GPU with 11GB of memory 
+- an Intel I7-3930M @ 3.2GHz CPU
 
 For more details about the alphas values and loop modes, please check [Run inference](#run-inference).
 
