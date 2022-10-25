@@ -107,7 +107,7 @@ Information about runtime for <b>alpha steps of 5</b> and initial image size of 
 </table>
 
 Those times are obtained with : 
-- an NVIDIA GeForce GTX 1080Ti GPU with 11GB of memory (Only around 5GB of GPU were used to generate images)
+- an NVIDIA GeForce GTX 1080Ti GPU with 11GB of memory (~5GB of GPU were used to generate images)
 - an Intel I7-3930M @ 3.2GHz CPU
 
 For more details about the alphas values and loop modes, please check [Run inference](#run-inference).
