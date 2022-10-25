@@ -61,11 +61,11 @@ Information about runtime for <b>alpha steps of 5</b> and initial image size of 
 | Device | Postprocessing Quality | Preprocessing | Generation |   Total  |
 | ------ | ---------------------- | ------------- | ---------- | -------- |
 | CPU    | No                     | ≈ 150sec      | ≈ 60sec    | ≈ 210sec |
-| ^      | Low                    | ^             | ≈ 140sec   | ≈ 290sec |
-| ^      | High                   | ^             | ≈ 170sec   | ≈ 330sec |
+|^      | Low                    |^             | ≈ 140sec   | ≈ 290sec |
+|^      | High                   |^             | ≈ 170sec   | ≈ 330sec |
 | GPU    | No                     | ≈ 20sec       | ≈ 20sec    | ≈  40sec |
-| ^      | Low                    | ^             | ≈ 100sec   | ≈ 120sec |
-| ^      | High                   | ^             | ≈ 130sec   | ≈ 150sec |
+|^      | Low                    |^             | ≈ 100sec   | ≈ 120sec |
+|^      | High                   |^             | ≈ 130sec   | ≈ 150sec |
 
 Those times are obtained with : 
 - an NVIDIA GeForce GTX 1080Ti GPU with 11GB of memory 
