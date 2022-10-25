@@ -60,12 +60,12 @@ We made a simple application to try out the model.
 Information about runtime for <b>alpha steps of 5</b> and initial image size of <b>512x512x117</b>:
 | Device | Postprocessing Quality | Preprocessing | Generation |   Total  |
 | ------ | ---------------------- | ------------- | ---------- | -------- |
-| CPU    | :No                  : | :≈ 150sec   : | ≈ 60sec    | ≈ 210sec |
-| ^^     | Low                    | ^^            | ≈ 140sec   | ≈ 290sec |
-| ^^     | High                   | ^^            | ≈ 170sec   | ≈ 330sec |
-| GPU    | :No                  : | :≈ 20sec    : | ≈ 20sec    | ≈  40sec |
-| ^^     | Low                    | ^^            | ≈ 100sec   | ≈ 120sec |
-| ^^     | High                   | ^^            | ≈ 130sec   | ≈ 150sec |
+| CPU    | No                     | ≈ 150sec      | ≈ 60sec    | ≈ 210sec |
+| ^      | Low                    | ^             | ≈ 140sec   | ≈ 290sec |
+| ^      | High                   | ^             | ≈ 170sec   | ≈ 330sec |
+| GPU    | No                     | ≈ 20sec       | ≈ 20sec    | ≈  40sec |
+| ^      | Low                    | ^             | ≈ 100sec   | ≈ 120sec |
+| ^      | High                   | ^             | ≈ 130sec   | ≈ 150sec |
 
 Those times are obtained with : 
 - an NVIDIA GeForce GTX 1080Ti GPU with 11GB of memory 
