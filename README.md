@@ -58,14 +58,53 @@ We made a simple application to try out the model.
 - It takes some times to be launched, some warning might appear but nothing wrong. 
 
 Information about runtime for <b>alpha steps of 5</b> and initial image size of <b>512x512x117</b>:
-| Device | Postprocessing Quality | Preprocessing | Generation |   Total  |
-| ------ | ---------------------- | ------------- | ---------- | -------- |
-| CPU    | No                     | ≈ 150sec      | ≈ 60sec    | ≈ 210sec |
-|^      | Low                    |^             | ≈ 140sec   | ≈ 290sec |
-|^      | High                   |^             | ≈ 170sec   | ≈ 330sec |
-| GPU    | No                     | ≈ 20sec       | ≈ 20sec    | ≈  40sec |
-|^      | Low                    |^             | ≈ 100sec   | ≈ 120sec |
-|^      | High                   |^             | ≈ 130sec   | ≈ 150sec |
+<table>
+    <thead>
+        <tr>
+            <th>Device</th>
+            <th>Postprocessing Quality</th>
+            <th>Preprocessing </th>
+            <th>Generation </th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=3>CPU</td>
+            <td>No</td>
+            <td rowspan=3>≈ 150sec</td>
+            <td>≈ 60sec</td>
+            <td>≈ 210sec</td>
+        </tr>
+        <tr>
+            <td>Low</td>
+            <td>≈ 140sec</td>
+            <td>≈ 290sec</td>
+        </tr>
+        <tr>
+            <td>High</td>
+            <td>≈ 170sec</td>
+            <td>≈ 330sec</td>
+        </tr>
+        <tr>
+            <td rowspan=3>GPU</td>
+            <td>No</td>
+            <td rowspan=3>≈ 20sec</td>
+            <td>≈ 20sec</td>
+            <td>≈ 40sec</td>
+        </tr>
+        <tr>
+            <td>Low</td>
+            <td>≈ 100sec</td>
+            <td>≈ 120sec</td>
+        </tr>
+        <tr>
+            <td>High</td>
+            <td>≈ 130sec</td>
+            <td>≈ 150sec</td>
+        </tr>
+    </tbody>
+</table>
 
 Those times are obtained with : 
 - an NVIDIA GeForce GTX 1080Ti GPU with 11GB of memory 
