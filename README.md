@@ -48,7 +48,7 @@ We made a simple application to try out the model.
 </p>
 
 **NOTES:** 
-- It can takes only one file at time (unlike the version in [Usage](#usage)
+- It can takes only one file at time (unlike the version in [Usage](#usage))
 - The preprocessing is included in the application but might take some time to run depending of the image size, CPU and GPU.
 - The postprocessing will put the generated image in the initial size:
   - No: Give only image in 128x128x128 ;
