@@ -58,7 +58,7 @@ We made a simple application to try out the model.
 - It takes some times to be launched, some warning might appear but nothing wrong. 
 
 Information about runtime for <b>alpha steps of 5</b> and initial image size of <b>512x512x117</b>:
-<table>
+<table class="center">
     <thead>
         <tr>
             <th>Device</th>
@@ -69,23 +69,6 @@ Information about runtime for <b>alpha steps of 5</b> and initial image size of 
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td rowspan=3>CPU</td>
-            <td>No</td>
-            <td rowspan=3>≈ 150sec</td>
-            <td>≈ 60sec</td>
-            <td>≈ 210sec</td>
-        </tr>
-        <tr>
-            <td>Low</td>
-            <td>≈ 140sec</td>
-            <td>≈ 290sec</td>
-        </tr>
-        <tr>
-            <td>High</td>
-            <td>≈ 170sec</td>
-            <td>≈ 330sec</td>
-        </tr>
         <tr>
             <td rowspan=3>GPU</td>
             <td>No</td>
@@ -103,11 +86,28 @@ Information about runtime for <b>alpha steps of 5</b> and initial image size of 
             <td>≈ 130sec</td>
             <td>≈ 150sec</td>
         </tr>
+        <tr>
+            <td rowspan=3>CPU</td>
+            <td>No</td>
+            <td rowspan=3>≈ 150sec</td>
+            <td>≈ 60sec</td>
+            <td>≈ 210sec</td>
+        </tr>
+        <tr>
+            <td>Low</td>
+            <td>≈ 140sec</td>
+            <td>≈ 290sec</td>
+        </tr>
+        <tr>
+            <td>High</td>
+            <td>≈ 170sec</td>
+            <td>≈ 330sec</td>
+        </tr>
     </tbody>
 </table>
 
 Those times are obtained with : 
-- an NVIDIA GeForce GTX 1080Ti GPU with 11GB of memory 
+- an NVIDIA GeForce GTX 1080Ti GPU with 11GB of memory (Only around 5GB of GPU were used to generate images)
 - an Intel I7-3930M @ 3.2GHz CPU
 
 For more details about the alphas values and loop modes, please check [Run inference](#run-inference).
