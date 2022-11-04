@@ -62,46 +62,26 @@ Information about runtime for <b>alpha steps of 5</b> and initial image size of 
     <thead>
         <tr>
             <th>Device</th>
-            <th>Postprocessing Quality</th>
             <th>Preprocessing </th>
             <th>Generation </th>
+            <th>Save 4DCT </th>
             <th>Total</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td rowspan=3>GPU</td>
-            <td>No</td>
-            <td rowspan=3>≈ 20sec</td>
+            <td>GPU</td>
             <td>≈ 20sec</td>
-            <td>≈ 40sec</td>
+            <td>≈ 10sec</td>
+            <td>≈ 30sec</td>
+            <td>≈ 70sec</td>
         </tr>
         <tr>
-            <td>Low</td>
-            <td>≈ 100sec</td>
+            <td>CPU</td>
             <td>≈ 120sec</td>
-        </tr>
-        <tr>
-            <td>High</td>
-            <td>≈ 130sec</td>
-            <td>≈ 150sec</td>
-        </tr>
-        <tr>
-            <td rowspan=3>CPU</td>
-            <td>No</td>
-            <td rowspan=3>≈ 150sec</td>
-            <td>≈ 60sec</td>
-            <td>≈ 210sec</td>
-        </tr>
-        <tr>
-            <td>Low</td>
-            <td>≈ 140sec</td>
-            <td>≈ 290sec</td>
-        </tr>
-        <tr>
-            <td>High</td>
-            <td>≈ 170sec</td>
-            <td>≈ 330sec</td>
+            <td>≈ 40sec</td>
+            <td>≈ 30sec</td>
+            <td>≈ 190sec</td>
         </tr>
     </tbody>
 </table>
