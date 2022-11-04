@@ -57,11 +57,12 @@ We made a simple application to try out the model (~2.1GB).
 - It doesn't need GPU, but it will take a longer time for preprocessing & generating phases.
 - It takes some times to be launched, some warning might appear but nothing wrong. 
 
-Information about runtime for <b>alpha steps of 5</b> and initial image size of <b>512x512x117</b>:
+Information about runtime for <b>alpha steps of 5</b>:
 <table class="center">
     <thead>
         <tr>
             <th>Device</th>
+            <th>Size</th>
             <th>Preprocessing </th>
             <th>Generation </th>
             <th>Save 4DCT </th>
@@ -70,14 +71,30 @@ Information about runtime for <b>alpha steps of 5</b> and initial image size of 
     </thead>
     <tbody>
         <tr>
-            <td>GPU</td>
+            <td rowspan=2>GPU</td>
+            <td>256 x 256 x 96</td>
+            <td>≈ 10sec</td>
+            <td>≈ 5sec</td>
+            <td>≈ 10sec</td>
+            <td>≈ 25sec</td>
+        </tr>
+        <tr>
+            <td>512 x 512 x 117</td>
             <td>≈ 20sec</td>
             <td>≈ 10sec</td>
             <td>≈ 30sec</td>
             <td>≈ 70sec</td>
         </tr>
         <tr>
-            <td>CPU</td>
+            <td rowspan=2>CPU</td>
+            <td>256 x 256 x 96</td>
+            <td>≈ 120sec</td>
+            <td>≈ 20sec</td>
+            <td>≈ 10sec</td>
+            <td>≈ 160sec</td>
+        </tr>
+        <tr>
+            <td>512 x 512 x 117</td>
             <td>≈ 120sec</td>
             <td>≈ 40sec</td>
             <td>≈ 30sec</td>
