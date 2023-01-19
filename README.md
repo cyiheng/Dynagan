@@ -3,9 +3,9 @@
   <img src="imgs/real_fake.gif" width="600" />
 </p>
 
-# Patient specific 4D CT respiratory motion synthesis using generative adversarial networks
+# Adversarial respiratory motion synthesis from static CT images using latent phase conditioning
 
-A general objective of radiotherapy treatment planning is to deliver the lowest radiation dose induced by imaging protocols. Four-dimensional computed tomography (4D CT) imaging is used routinely for respiratory motion synchronization in radiotherapy treatment planning. However, those images require a longer acquisition time leading to a higher radiation exposure, up to six times a standard 3D CT acquisition. There is therefore a clear need for alternative planning methods that would reduce the dose impact.
+A general objective of radiotherapy treatment planning is to deliver the lowest radiation dose induced by imaging protocols. Four-dimensional computed tomography (4DCT) imaging is used routinely for respiratory motion synchronization in radiotherapy treatment planning. However, those images require a longer acquisition time leading to a higher radiation exposure, up to six times a standard 3D CT acquisition. There is therefore a clear need for alternative planning methods that would reduce the dose impact.
 
 This study proposes a new deep learning architecture architecture to generate realistic respiratory motion from static 3D CT images tailored to the actual patient breathing dynamics. An image-to-image 3D generative adversarial network conditioned with a 3D CT image and an amplitude-based scalar value using a scalar injection mechanism based on an Adaptive Instance Normalization layer is proposed in this study. 
 
@@ -21,7 +21,7 @@ TODO
 ```
 
 # Table of Contents
-- [Intro](#Patient-specific-4D-CT-respiratory-motion-synthesis-using-generative-adversarial-networks)
+- [Intro](#Adversarial respiratory motion synthesis from static CT images using latent phase conditioning)
 - [Table of Contents](#table-of-contents)
 - [Ready-to-go](#ready-to-go)
 - [Usage](#usage)
@@ -43,8 +43,8 @@ We made a simple application to try out the model (~2.1GB).
 
 > For [Linux user](https://ubocloud.univ-brest.fr/s/aL8yffHNjWYSNtm) 
 
-<p align="center">
-  <img src="imgs/screenshot_interface.png" width="600" />
+<p align="left">
+  <img src="imgs/screenshot_interface.png" width="400" />
 </p>
 
 **NOTES:** 
@@ -120,8 +120,8 @@ For more details about the alphas values and loop modes, please check [Run infer
 
 - Clone this repo:
 ```bash
-git clone https://github.com/cyiheng/InProgress
-cd InProgress
+git clone https://github.com/cyiheng/Dynagan
+cd Dynagan
 ```
 
 - Install dependencies:
