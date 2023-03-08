@@ -1,13 +1,13 @@
 <br>
 <p align="center">
-  <img src="imgs/real_fake.gif" width="600" />
+  <img src="imgs/output.gif" width="600" />
 </p>
 
-# Adversarial respiratory motion synthesis from static CT images using latent phase conditioning
+# Dual supervised-unsupervised respiratory motion synthesis from static CT images using latent phase conditioning
 
-A general objective of radiotherapy treatment planning is to deliver the lowest radiation dose induced by imaging protocols. Four-dimensional computed tomography (4DCT) imaging is used routinely for respiratory motion synchronization in radiotherapy treatment planning. However, those images require a longer acquisition time leading to a higher radiation exposure, up to six times a standard 3D CT acquisition. There is therefore a clear need for alternative planning methods that would reduce the dose impact.
+Four-dimensional computed tomography (4DCT) consists in reconstructing an acquisition into multiple phases to track internal organ and tumor motion. It is commonly used in radiotherapy treatment planning but lead to higher doses of radiation, up to six times a conventional 3D CT scan. In this study, we propose a deep image synthesis method to generate pseudo respiratory CT phases from static images for motion-aware, 4DCT-free treatment planning. The model produces patient-specific deformation vector fields (DVFs) by conditioning synthesis on external respiratory traces. 
 
-This study proposes a new deep learning architecture architecture to generate realistic respiratory motion from static 3D CT images tailored to the actual patient breathing dynamics. An image-to-image 3D generative adversarial network conditioned with a 3D CT image and an amplitude-based scalar value using a scalar injection mechanism based on an Adaptive Instance Normalization layer is proposed in this study. 
+A key methodological contribution is to encourage DVF realism through supervised DVF training while using an adversarial term jointly not only on the warped image but also on the magnitude of the DVF itself. This way, we avoid excessive smoothness typically obtained through unsupervised deep learning registration, and encourage correlations between the respiratory amplitude and the generated image.
 
 This repository shares source code to run inference and thus generate motion from a 3D CT image.
 
@@ -21,7 +21,7 @@ TODO
 ```
 
 # Table of Contents
-- [Intro](#Adversarial respiratory motion synthesis from static CT images using latent phase conditioning)
+- [Intro](#dual-supervised-unsupervised-respiratory-motion-synthesis-from-static-ct-images-using-latent-phase-conditioning)
 - [Table of Contents](#table-of-contents)
 - [Ready-to-go](#ready-to-go)
 - [Usage](#usage)
