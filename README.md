@@ -198,9 +198,9 @@ For training, two subfolder in `imagesTr` are necessary.
 - In both folder, a `body` folder will contain the segmentation of the body used to estimate the respiratory amplitude. If at the beginning of the training, this folder is empty, it will be filled by segmentation done during training.
 - The `dvf` folder need to contains the deformation vector field produced by any registration method between phases. The names of the DVF are the same as the target images referring to the DVF between input-target images (input as moving, target as fixed)
 
-In our work, we used a state-of-the-art conventional [DIR method](#https://github.com/visva89/pTVreg)
+In our work, we used a state-of-the-art conventional [DIR method](https://github.com/visva89/pTVreg)
 
-### Run training
+### Run training
 <p align="center">
   <img src="imgs/method.png" width="800" />
 </p>
@@ -214,7 +214,7 @@ python3 ./train_3D.py --dataroot ./datasets/ --name train_from_scratch
 --lambda_1 : weight of the L1 loss
 --lambda_2 : weight of the GAN loss
 ```
-- Other basic option are from the [pix2pix](#https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/tree/master/options) framework (training epoch, etc, ...)
+- Other basic option are from the [pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/tree/master/options) framework (training epoch, etc, ...)
 
 ## Testing
 
@@ -225,7 +225,7 @@ Download a pre-trained model with `./scripts/download_pretrained_model.sh`.
 bash ./scripts/download_pretrained_model.sh
 ```
 
-### Run Inference
+### Run inference
 
 - Test the model after download pretrained weight:
 ```bash
