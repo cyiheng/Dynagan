@@ -25,7 +25,6 @@ class BaseOptions():
         parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
         parser.add_argument('--checkpoints_dir', type=str, default='./checkpoints', help='models are saved here')
         # model parameters
-        parser.add_argument('--model', type=str, default='cycle_gan', help='chooses which model to use. [cycle_gan | pix2pix | test | colorization | custom]')
         parser.add_argument('--ngf', type=int, default=64, help='# of gen filters in the last conv layer')
         parser.add_argument('--ndf', type=int, default=64, help='# of discrim filters in the first conv layer')
         parser.add_argument('--n_layers_D', type=int, default=3, help='only used if netD==n_layers')
@@ -34,7 +33,6 @@ class BaseOptions():
         parser.add_argument('--init_gain', type=float, default=0.02, help='scaling factor for normal, xavier and orthogonal.')
         parser.add_argument('--no_dropout', action='store_true', help='no dropout for the generator')
         # dataset parameters
-        parser.add_argument('--dataset_mode', type=str, default='test', help='chooses how datasets are loaded. [unaligned | aligned | single | colorization | nifti]')
         parser.add_argument('--direction', type=str, default='AtoB', help='AtoB or BtoA')
         parser.add_argument('--serial_batches', action='store_true', help='if true, takes images in order to make batches, otherwise takes them randomly')
         parser.add_argument('--num_threads', default=4, type=int, help='# threads for loading data')
@@ -52,6 +50,8 @@ class BaseOptions():
         parser.add_argument('--suffix', default='', type=str, help='customized suffix: opt.name = opt.name + suffix: e.g., {model}_{netG}_size{load_size}')
         
          # Modified from pix2pix
+        parser.add_argument('--model', type=str, default='train', help='chooses which model to use. [cycle_gan | pix2pix | test | colorization | custom]')
+        parser.add_argument('--dataset_mode', type=str, default='train', help='chooses how datasets are loaded. [unaligned | aligned | single | colorization | nifti]')
         parser.add_argument('--input_nc', type=int, default=1, help='# of input image channels: 1 for grayscale')
         parser.add_argument('--output_nc', type=int, default=3, help='# of output image channels: 3 for DVF')
         parser.add_argument('--netD', type=str, default='dvf', help='specify discriminator architecture')

@@ -6,6 +6,9 @@ import numpy as np
 import os
 import glob
 import nibabel as nib
+from skimage import filters
+import cc3d
+import cv2
 
 def diagnose_network(net, name='network'):
     """Calculate and print the mean of average absolute(gradients)
@@ -47,6 +50,60 @@ def mkdirs(paths):
             mkdir(path)
     else:
         mkdir(paths)
+        
+def seg_body(img_arr):
+    '''
+    Segmentation of the body
+    :param img_arr: 3D image array
+    :return: return a binary array of the segmentation 
+    '''
+    # Step 2 - 3 : Threshold value
+    # T1 : separate air and human tissue
+    img_arr = img_arr.astype(int)
+    T1 = filters.threshold_otsu(img_arr)
+    img_arr = np.where(img_arr < T1, -1000, img_arr)
+
+    # T2 : separate fat (under 0 HU is fat : T1 < gray level < T2)
+    # T2 = 0 # Under 0 is fat component
+    # img_arr = np.where(img_arr < T2, -1000, img_arr)    
+    
+    # T3 : separate muscle and skeleton
+    T3 = filters.threshold_otsu(img_arr[img_arr > T1])
+    
+    img_arr = np.where(img_arr > T3, 1000, img_arr)
+    img_arr = np.where(img_arr > -1000, 1, img_arr)
+
+    # Step 4 : Connecting component processing
+    # Find human body without background
+    connectivity = 6
+    labels_out, N = cc3d.connected_components(img_arr, connectivity=connectivity, return_N=True) # free
+    
+    # Need to find the index which represents the body
+    idx, counts = np.unique(labels_out, return_counts=True)
+    idx_tissues = idx[np.argmax(counts[1:])+1] # The first element is exclude because it's the background
+    tissues = np.where(labels_out != idx_tissues, 0, 1)
+
+    # Step 5 : Region filling
+    # Filling lungs region
+    res = []
+    for i in range(tissues.shape[0]):
+        s = tissues[i, :, :]
+        s = np.uint8(s)
+        im_floodfill = s.copy()
+
+        # Notice the size needs to be 2 pixels than the image.
+        h, w = s.shape[:2]
+        mask = np.zeros((h+2, w+2), np.uint8)
+
+        # Floodfill from point (0, 0)
+        cv2.floodFill(im_floodfill, mask, (0,0), 255);
+        im_floodfill_inv = cv2.bitwise_not(im_floodfill)
+        # Combine the two images to get the foreground.
+        im_out = s | im_floodfill_inv
+        im_out = np.where(im_out==255, 1,im_out)
+        res += [im_out]
+    filled = np.array(res)    
+    return filled
         
 def inv_normalize(x, output_min = -1000, output_max = 1000):
     """
