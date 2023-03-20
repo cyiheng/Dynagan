@@ -217,8 +217,7 @@ python3 ./train_3D.py --dataroot ./datasets/ --name train_from_scratch
 Other basic options are from the pix2pix framework.
 
 
-## Testing
-
+## Testing
 
 ### Download pretrained weight
 Download a pre-trained model with `./scripts/download_pretrained_model.sh`.
