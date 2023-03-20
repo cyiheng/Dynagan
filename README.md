@@ -214,7 +214,7 @@ python3 ./train_3D.py --dataroot ./datasets/ --name train_from_scratch
 --lambda_1 : weight of the L1 loss
 --lambda_2 : weight of the GAN loss
 ```
-Other basic options are from the pix2pix framework.
+Other basic options are from the [pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/tree/master/options) framework.
 
 
 ## Testing
