@@ -144,4 +144,4 @@ class TrainDataset(BaseDataset):
 
     def __len__(self):
         """Return the total number of images."""
-        return len(self.target_paths)
+        return len(self.input_paths)
