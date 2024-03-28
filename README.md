@@ -5,7 +5,7 @@
 
 # CT respiratory motion synthesis using joint supervised and adversarial learning
 
-Four-dimensional computed tomography (4D CT) consists in reconstructing an acquisition into multiple phases to track internal organ and tumor motion. It is commonly used in radiotherapy treatment planning but lead to higher doses of radiation, up to six times a conventional 3D CT scan. In this study, we propose a deep image synthesis method to generate pseudo respiratory CT phases from static images for motion-aware, 4D CT-free treatment planning. The model produces patient-specific deformation vector fields (DVFs) by conditioning synthesis on external respiratory traces. 
+Four-dimensional computed tomography (4D CT) consists in reconstructing an acquisition into multiple phases to track internal organ and tumor motion. It is commonly used in radiotherapy treatment planning but lead to higher doses of radiation, up to six times a conventional 3D CT scan. In this study, we propose a deep image synthesis method to generate pseudo respiratory CT phases from static images for motion-aware, 4D CT-free treatment planning. The model produces patient-specific deformation vector fields (DVFs) by conditioning synthesis on external respiratory traces.
 
 A key methodological contribution is to encourage DVF realism through supervised DVF training while using an adversarial term jointly not only on the warped image but also on the magnitude of the DVF itself. This way, we avoid excessive smoothness typically obtained through unsupervised deep learning registration, and encourage correlations between the respiratory amplitude and the generated image.
 
@@ -16,6 +16,7 @@ This repository shares source code to run training, inference and a standalone a
 </p>
 
 If you use this code for your research, please cite our papers.
+
 ```
 @article{10.1088/1361-6560/ad388a,
 	title={CT respiratory motion synthesis using joint supervised and adversarial learning},
@@ -27,7 +28,8 @@ If you use this code for your research, please cite our papers.
 ```
 
 # Table of Contents
-- [Intro](#dual-supervised-unsupervised-respiratory-motion-synthesis-from-static-ct-images-using-latent-phase-conditioning)
+
+- [Intro](#ct-respiratory-motion-synthesis-using-joint-supervised-and-adversarial-learning)
 - [Table of Contents](#table-of-contents)
 - [Ready-to-go](#ready-to-go)
 - [Usage](#usage)
@@ -44,20 +46,20 @@ If you use this code for your research, please cite our papers.
     - [Postprocessing](#postprocessing)
 - [Acknowledgements](#acknowledgements)
 
-
 # Ready-to-go
 
 We made a simple application to try out the model (~2.1GB).
 
 > For [Windows user](https://ubocloud.univ-brest.fr/s/tqjfEe39Q3J8qyD)
 
-> For [Linux user](https://ubocloud.univ-brest.fr/s/aL8yffHNjWYSNtm) 
+> For [Linux user](https://ubocloud.univ-brest.fr/s/aL8yffHNjWYSNtm)
 
 <p align="left">
   <img src="imgs/screenshot_interface.png" width="400" />
 </p>
 
-**NOTES:** 
+**NOTES:**
+
 - It can takes only one file at time (unlike the version in [Usage](#usage))
 - The preprocessing is included in the application but might take some time to run depending of the image size, CPU and GPU.
 - The postprocessing will put the generated image in the initial size:
@@ -65,9 +67,10 @@ We made a simple application to try out the model (~2.1GB).
   - Low: Resampled generated image to initial size ;
   - High: Resample the deformation vector field to the initial space and then warp the original input image ;
 - It doesn't need GPU, but it will take a longer time for preprocessing & generating phases.
-- It takes some times to be launched, some warning might appear but nothing wrong. 
+- It takes some times to be launched, some warning might appear but nothing wrong.
 
 Information about runtime for <b>alpha steps of 5</b>:
+
 <table class="center">
     <thead>
         <tr>
@@ -113,7 +116,8 @@ Information about runtime for <b>alpha steps of 5</b>:
     </tbody>
 </table>
 
-Those times are obtained with : 
+Those times are obtained with :
+
 - an NVIDIA GeForce GTX 1080Ti GPU with 11GB of memory (~5GB of GPU were used to generate images)
 - an Intel I7-3930M @ 3.2GHz CPU
 
@@ -122,6 +126,7 @@ For more details about the alphas values and loop modes, please check [Run infer
 # Usage
 
 ## Prerequisites
+
 - Linux
 - Python 3
 - CPU or NVIDIA GPU + CUDA CuDNN
@@ -129,25 +134,29 @@ For more details about the alphas values and loop modes, please check [Run infer
 ## Installation
 
 - Clone this repo:
+
 ```bash
 git clone https://github.com/cyiheng/Dynagan
 cd Dynagan
 ```
 
 - Create a virtual environnement and install dependencies:
+
 ```bash
 python -m venv ./Dynagan_venv
 source ./Dynagan_venv/bin/activate
 pip install -r requirements.txt
 ```
+
 ## Datasets
 
 As example, you can use the [4D-Lung dataset](#https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=21267414) from The Cancer Imaging Archive.
+
 ```
 Hugo, Geoffrey D., Weiss, Elisabeth, Sleeman, William C., Balik, Salim, Keall, Paul J., Lu, Jun, & Williamson, Jeffrey F. (2016). Data from 4D Lung Imaging of NSCLC Patients. The Cancer Imaging Archive. http://doi.org/10.7937/K9/TCIA.2016.ELN8YGLE
 ```
 
-### Preprocessing 
+### Preprocessing
 
 <p align="center">
   <img src="imgs/preprocessing.png" width="800" />
@@ -155,6 +164,7 @@ Hugo, Geoffrey D., Weiss, Elisabeth, Sleeman, William C., Balik, Salim, Keall, P
 
 A Jupyter notebook is available to **preprocess** data into the input image format.
 Before running the notebook, please check the following information:
+
 - Fileformat supported: NifTI
 - Filename: `LungCT_patient_phase.nii.gz (i.e: LungCT_0100_0005.nii.gz)`
 - Initial files location: `./datasets/001_original/`
@@ -163,6 +173,7 @@ Before running the notebook, please check the following information:
 - **NOTE:** We assume that the files are already convert from DICOM to NifTI format
 
 After running the notebook, the dataset directories should be like following if all 4D-lung dataset is used:
+
 ```text
 ./datasets
 ├── 000_csv
@@ -191,14 +202,18 @@ After running the notebook, the dataset directories should be like following if 
 │       └── ...
 └── imagesTs
 ```
+
 The final images are in a shape of 128 x 128 x 128.
 Please select the images you want to use as input for training or testing in the directory `imagesTr` and `imagesTs` respectively.
 
 ## Training
+
 If you only want to generate motion with our weights, please go directly to the [next](#testing) section
 
 ### Dataset composition
-For training, two subfolder in `imagesTr` are necessary. 
+
+For training, two subfolder in `imagesTr` are necessary.
+
 - The `input` folder refers to images of initial phase (we used the EOE phase as input)
 - The `target` folder contains the other phases that the model will try to generate
 - In both folder, a `body` folder will contain the segmentation of the body used to estimate the respiratory amplitude. If at the beginning of the training, this folder is empty, it will be filled by segmentation done during training.
@@ -207,25 +222,30 @@ For training, two subfolder in `imagesTr` are necessary.
 In our work, we used a state-of-the-art conventional [DIR method](https://github.com/visva89/pTVreg)
 
 ### Run training
+
 <p align="center">
   <img src="imgs/method.png" width="800" />
 </p>
 
 - Run training:
+
 ```bash
 python3 ./train_3D.py --dataroot ./datasets/ --name train_from_scratch
 ```
+
 - The initial `lambda_1` and `lambda_2` are set to 100 and 1, you can change their values by using the options:
+
 ```bash
 --lambda_1 : weight of the L1 loss
 --lambda_2 : weight of the GAN loss
 ```
-Other basic options are from the [pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/tree/master/options) framework.
 
+Other basic options are from the [pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/tree/master/options) framework.
 
 ## Testing
 
 ### Download pretrained weight
+
 Download a pre-trained model with `./scripts/download_pretrained_model.sh`.
 
 ```bash
@@ -235,19 +255,24 @@ bash ./scripts/download_pretrained_model.sh
 ### Run inference
 
 - Test the model after download pretrained weight:
+
 ```bash
 python ./test_3D.py --dataroot ./datasets/ --name pretrained_model --model test --dataset_mode test --num_test 1
 ```
+
 - The test results will be saved by default in the directory : `./results/pretrained_model/`
-- You can change the range of alpha with the following options: 
+- You can change the range of alpha with the following options:
+
 ```bash
 --alpha_min : the minimum value of the generated images (default: 0.0)
 --alpha_max : the maximum value of the generated images (default: 2.0)
 --alpha_step: the number of intermediate images between the range [alpha_min, alpha_max] (default: 5)
 ```
-- **NOTE:** The minimum and maximum alphas values are 0.0 and 3.5 respectively. 
 
-- You can select the loop mode for the final generated 4DCT: 
+- **NOTE:** The minimum and maximum alphas values are 0.0 and 3.5 respectively.
+
+- You can select the loop mode for the final generated 4DCT:
+
 ```bash
 --loop : change how the 4DCT is stacked from the generated images
 	0 : Only Source phase to alpha-inhale phase - [0,1,...,alpha]
@@ -263,10 +288,13 @@ A Jupyter notebook is available to **postprocess** data into the initial size if
 The notebook will use the deformation vector field generated at [inference](#run-inference).
 
 Please note that an example is given in the notebook but the following points need to be modified:
+
 - The paths
 - The input file used
 
 # Acknowledgments
+
 Our code is inspired by :
+
 - [CycleGAN and pix2pix in Pytorch](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix).
 - [vox2vox](https://github.com/enochkan/vox2vox)
