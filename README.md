@@ -3,7 +3,7 @@
   <img src="imgs/output.gif" width="600" />
 </p>
 
-# Dual supervised-unsupervised respiratory motion synthesis from static CT images using latent phase conditioning
+# CT respiratory motion synthesis using joint supervised and adversarial learning
 
 Four-dimensional computed tomography (4D CT) consists in reconstructing an acquisition into multiple phases to track internal organ and tumor motion. It is commonly used in radiotherapy treatment planning but lead to higher doses of radiation, up to six times a conventional 3D CT scan. In this study, we propose a deep image synthesis method to generate pseudo respiratory CT phases from static images for motion-aware, 4D CT-free treatment planning. The model produces patient-specific deformation vector fields (DVFs) by conditioning synthesis on external respiratory traces. 
 
@@ -17,7 +17,13 @@ This repository shares source code to run training, inference and a standalone a
 
 If you use this code for your research, please cite our papers.
 ```
-TODO
+@article{10.1088/1361-6560/ad388a,
+	title={CT respiratory motion synthesis using joint supervised and adversarial learning},
+	author={Cao, Yi-Heng and Bourbonne, Vincent and Lucia, François and Schick, Ulrike and Bert, Julien and Jaouen, Vincent and Visvikis, Dimitris},
+	journal={Physics in Medicine & Biology},
+	url={http://iopscience.iop.org/article/10.1088/1361-6560/ad388a},
+	year={2024}
+}
 ```
 
 # Table of Contents
